@@ -1,0 +1,99 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "facebook test",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "readFeedIntent",
+          "slots": [
+            {
+              "name": "numberOfPosts",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "six",
+                "five",
+                "four",
+                "three",
+                "two",
+                "one"
+              ]
+            }
+          ],
+          "samples": [
+            "read my facebook feed",
+            "view my feed",
+            "read my feed"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": [
+            "repeat these messages",
+            "repeat these posts",
+            "repeat that please"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "readFeedIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "numberOfPosts",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1387069216410.1245178642619",
+                "elicitation": "Elicit.Slot.509051212812.1284135648973"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.509051212812.1284135648973",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "how many posts would you like to read?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1387069216410.1245178642619",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "you are going to view {numberOfPosts} posts"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "31"
+}

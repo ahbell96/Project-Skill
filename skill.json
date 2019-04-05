@@ -1,0 +1,43 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "facebook-skill-test",
+          "sourceDir": "lambda\\us-east-1_facebook-skill-test"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [],
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "facebook test",
+          "summary": "Sample Short Description",
+          "description": "",
+          "examplePhrases": [
+            "Alexa, read my feed",
+            "Alexa, get my feed"
+          ],
+          "keywords": []
+        },
+        "en-GB": {
+          "name": "facebook test"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
+    }
+  }
+}

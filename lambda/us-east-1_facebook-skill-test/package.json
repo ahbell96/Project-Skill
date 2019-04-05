@@ -1,0 +1,29 @@
+{
+  "name": "facebook-for-alexa",
+  "version": "0.0.2",
+  "description": "Connecting an alexa skill to facebook, using the facebook API",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-sdk": "^1.0.25",
+    "ask-sdk": "^2.5.1",
+    "ask-sdk-dynamodb-persistence-adapter": "^2.5.1",
+    "ask-sdk-s3-persistence-adapter": "^2.5.1",
+    "ask-sdk-v1adapter": "^2.5.1",
+    "facebook-node": "0.0.3",
+    "tiny-facebook-wrapper": "0.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matchboxmobile/AlexaFacebook.git"
+  },
+  "author": "Matchbox Mobile",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matchboxmobile/AlexaFacebook/issues"
+  },
+  "homepage": "https://github.com/matchboxmobile/AlexaFacebook#readme"
+}

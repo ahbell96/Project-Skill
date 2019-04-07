@@ -4,6 +4,9 @@
 // https://developer.amazon.com/docs/smapi/ask-cli-command-reference.html#update-skill-subcommand
 // ask sdk
 // https://ask-sdk-for-nodejs.readthedocs.io/en/latest/Setting-Up-The-ASK-SDK.html
+// add more features
+// https://www.youtube.com/watch?v=_F9cLrI_thg
+
 
 
 

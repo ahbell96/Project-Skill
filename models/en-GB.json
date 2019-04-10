@@ -20,7 +20,10 @@
         },
         {
           "name": "AMAZON.StopIntent",
-          "samples": []
+          "samples": [
+            "stop",
+            "nevermind"
+          ]
         },
         {
           "name": "AMAZON.NavigateHomeIntent",
@@ -54,6 +57,7 @@
         {
           "name": "AMAZON.RepeatIntent",
           "samples": [
+            "yes",
             "can you repeat that",
             "repeat that please",
             "repeat these posts",
@@ -105,7 +109,7 @@
           },
           {
             "type": "PlainText",
-            "value": "you are going to view {numberOfPosts} posts."
+            "value": "you are going to hear {numberOfPosts} posts, do you want to hear them?"
           }
         ]
       }

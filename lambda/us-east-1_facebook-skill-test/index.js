@@ -44,12 +44,23 @@ const output = "";
 //     }
 // }
 
+// Add handlers.
+// handler contains the lambda function code ^above. (the required functionality)
+// context is used to give details of the lambda function.
+exports.handler = function (event, context, callback) {
+    var alexa = Alexa.handler(event, context);
+    alexa.dynamoDBTableName = "getOutput";
+    alexa.registerHandlers(sessionHandler);
+    alexa.execute();
+};
+
 // Create a new session handler
 var sessionHandler = {
     'NewSession': function () {
         // NewSession is the context object instanciated within the handler.
         // Access token is instantiated. If available, it is then used for the facebookAPI.
         accessToken = this.event.session.user.accessToken;
+        var getOutput = this.attributes['getOutput'];
 
         if (!accessToken) {
             var errMessage = "There was a problem getting the correct token for this skill"; 
@@ -93,6 +104,7 @@ var sessionHandler = {
                         //this.response.speak(output + postQuery).listen(postQuery);
                         //alexa.emit(':responseReady');
                         //alexa.emit(':ask', output, output);
+                        getOutput = output;
                         alexa.emit(':ask', (output + postQuery));
                     } 
                     else {
@@ -114,7 +126,7 @@ var sessionHandler = {
 
     'AMAZON.RepeatIntent': function () {
         // Used to repeat the intent.
-        this.response.speak(this.attributes['readPosts'] + "Do you want to hear your feed again?")
+        this.response.speak(getOutput + "Do you want to hear your feed again?")
         .listen("Do you want to hear your feed again?");
         this.emit(':responseReady');
     },
@@ -138,14 +150,4 @@ var sessionHandler = {
     'Unhandled': function () {
         this.emit(':ask', helpText, helpText);
     }
-};
-
-// Add handlers.
-// handler contains the lambda function code ^above. (the required functionality)
-// context is used to give details of the lambda function.
-exports.handler = function (event, context, callback) {
-    var alexa = Alexa.handler(event, context);
-    //alexa.dynamoDBTableName = 'storingSession';
-    alexa.registerHandlers(sessionHandler);
-    alexa.execute();
 };

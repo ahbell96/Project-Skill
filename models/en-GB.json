@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "facebook test",
+      "invocationName": "facebook reader",
       "intents": [
         {
           "name": "AMAZON.FallbackIntent",
@@ -22,7 +22,8 @@
           "name": "AMAZON.StopIntent",
           "samples": [
             "stop",
-            "nevermind"
+            "nevermind",
+            "no"
           ]
         },
         {
@@ -57,7 +58,8 @@
         {
           "name": "AMAZON.RepeatIntent",
           "samples": [
-            "yes",
+            "repeat that",
+            "repeat my feed",
             "can you repeat that",
             "repeat that please",
             "repeat these posts",

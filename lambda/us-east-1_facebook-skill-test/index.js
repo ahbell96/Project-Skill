@@ -8,8 +8,6 @@
 // https://www.youtube.com/watch?v=_F9cLrI_thg
 
 
-
-
 // Node Functionality
 //const Alexa = require('alexa-sdk');
 const Alexa = require('ask-sdk-v1adapter');
@@ -32,21 +30,8 @@ var sessionHandler;
 
 const output = "";
 
-// get Output Object
-// var theOutput = {
-//     theFbMessage: 'message not passed through',
-//     get theOutput() {
-//         return this.theFbMessage;
-//     },
-//     set theOutput (output) {
-//         var msge = output; // convert to string?
-//         this.theFbMessage = msge;
-//     }
-// }
-
 // Add handlers.
-// handler contains the lambda function code ^above. (the required functionality)
-// context is used to give details of the lambda function.
+// handler contains the lambda function code, given below.
 exports.handler = function (event, context, callback) {
     var alexa = Alexa.handler(event, context);
     alexa.dynamoDBTableName = "getOutput";
@@ -55,7 +40,7 @@ exports.handler = function (event, context, callback) {
 };
 
 // Create a new session handler
-var sessionHandler = {
+sessionHandler = {
     'NewSession': function () {
         // NewSession is the context object instanciated within the handler.
         // Access token is instantiated. If available, it is then used for the facebookAPI.
@@ -81,7 +66,6 @@ var sessionHandler = {
 
         // Instantiating the slot
         var numberOfPosts = this.event.request.intent.slots.numberOfPosts.value;
-        //var outputFeed = this.event.readFeedIntent.intent.slots.readPosts.value;
         
         // Double checking for access token.
         if (accessToken != "") {
@@ -90,20 +74,11 @@ var sessionHandler = {
                 if (response && !response.error) {
                     // If the data is gathered put into a string to then output.
                     if (response.data) {
-                        //var output = "";
                         for (var i = 0; i < response.data.length; i++) {
                             if (i < numberOfPosts) {
-                                                // post number     // actual message  // appending fullstop.
                                 output += "Post " + (i + 1) + ", " + response.data[i].message + ". ";
-                                //var speechOutput = output;
                             }
-                            // i want to repeat the output if the user wants to.
-                            // i need to save the output as a session attribute.
                         }
-                        //theOutput(output);
-                        //this.response.speak(output + postQuery).listen(postQuery);
-                        //alexa.emit(':responseReady');
-                        //alexa.emit(':ask', output, output);
                         getOutput = output;
                         alexa.emit(':ask', (output + postQuery));
                     } 
@@ -116,8 +91,6 @@ var sessionHandler = {
                     // Handle errors here.
                     console.log(response.error);
                 }
-                //this.attributes.lastSpeech = output;
-                //this.attributes['readPosts'] = theOutput.theFbMessage; 
             });
         } else {
             this.emit(':tell', noAccessToken, tryLaterText);
@@ -126,7 +99,7 @@ var sessionHandler = {
 
     'AMAZON.RepeatIntent': function () {
         // Used to repeat the intent.
-        this.response.speak(getOutput + "Do you want to hear your feed again?")
+        this.response.speak(getOutput + "Do you want to hear your feed again? you can say repeat my feed")
         .listen("Do you want to hear your feed again?");
         this.emit(':responseReady');
     },
